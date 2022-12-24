@@ -33,5 +33,11 @@
 		"vite": "^4.0.0",
 		"vitest": "^0.25.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@firebase/auth": "^0.21.0",
+		"@sveltech/routify": "^1.9.10",
+		"firebase": "^9.15.0",
+		"svelte-routing": "^1.6.0"
+	}
 }
