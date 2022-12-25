@@ -1,8 +1,5 @@
-<script>
-    /**
-	 * @type {any}
-	 */
-     export let value
+<script lang="ts">
+     export let value: string
 
      import * as db from '../database/main'
 
@@ -10,6 +7,10 @@
         "Login page",
         "Registration page"
     ]
+
+    function isValidInput(): boolean {
+        return true
+    }
 
     function handleClick() {
         null

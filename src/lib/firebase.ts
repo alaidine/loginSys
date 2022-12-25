@@ -13,7 +13,7 @@ const config = {
 
 firebase.initializeApp(config)
 
-export function Register(email: any, password: any) { // create a user
+export function Register(email: string, password: string) { // create a user
     const auth = getAuth()
     createUserWithEmailAndPassword(auth, email, password)
     .then(function(result: any) {
@@ -28,7 +28,7 @@ export function Register(email: any, password: any) { // create a user
     })
 }
 
-export function Login(email: any, password: any) { // sign in
+export function Login(email: string, password: string) { // sign in
     const auth = getAuth()
     signInWithEmailAndPassword(auth, email, password)
     .then(function(result: any) {
