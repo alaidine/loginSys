@@ -1,4 +1,8 @@
-<input class="input" />
+<script lang="ts">
+     export let value: string
+</script>
+
+<input class="input" bind:value={value} />
 
 <style>
     .input {

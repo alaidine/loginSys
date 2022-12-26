@@ -1,14 +1,31 @@
-<script>
+<script lang="ts">
     import Button from '../../lib/Button.svelte'
+		import OtherButton from '../../lib/OtherButton.svelte'
     import Input from '../../lib/Input.svelte'
+    import * as db from '../../lib/firebase'
+
+    let email: string = ''
+    let password: string = ''
+
+    function isValidInput(input: string[]): boolean {
+        if (input[0].length == 0 || input[1].length == 0) return false
+        return true
+    }
+
+		function register() {
+				let input: string[] = [email, password]
+				console.log(input)
+
+				if (isValidInput(input)) db.Register(email, password)
+				else console.log("invalid input")
+		}
 </script>
 
 <section>
     <div class="container">
-        <Input />
-        <Input />
-        <Input />
-        <Button value="Register" />
+        <Input bind:value={email} />
+        <Input bind:value={password} />
+        <OtherButton value="Register" myFunction={register} />
         <Button value="Home" />
     </div>
 </section>

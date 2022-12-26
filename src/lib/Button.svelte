@@ -1,19 +1,13 @@
 <script lang="ts">
-     export let value: string
-
-     import * as db from '../database/main'
+    export let value: string
 
     const routes = [
         "Login page",
         "Registration page"
     ]
 
-    function isValidInput(): boolean {
-        return true
-    }
-
     function handleClick() {
-        null
+				console.log(`${value} button has been clicked:`)
     }
 </script>
 
@@ -34,11 +28,11 @@
 
 {#if routes.includes(value)}
     <a href="/{value}">
-        <button class="button" >{value}</button>
+        <button class="button" on:click={handleClick}>{value}</button>
     </a>
 {:else if value == "Home"}
     <a href="/">
-        <button class="button" >{value}</button>
+        <button class="button" on:click={handleClick}>{value}</button>
     </a>
 {:else}
     <button class="button" on:click={handleClick}>{value}</button>

@@ -1,13 +1,37 @@
-<script>
+<script lang="ts">
     import Button from '../../lib/Button.svelte'
+		import OtherButton from '../../lib/OtherButton.svelte'
     import Input from '../../lib/Input.svelte'
+    import * as db from '../../lib/firebase'
+
+    export let email: string = ''
+    export let password: string = ''
+
+    function isValidInput(input: string[]): boolean {
+        if (input[0].length == 0 || input[1].length == 0) return false
+        return true
+    }
+
+		function login() {
+				let input: string[] = [email, password]
+				let isSignedIn: boolean = true
+				console.log(input)
+				
+				if (isValidInput(input)) {
+						db.Login(email, password)
+				}
+
+				if (isSignedIn == true) { // change routes to be on logged in page
+						console.log("is signed in")
+				}
+		}
 </script>
 
 <section>
     <div class="container">
-        <Input />
-        <Input />
-        <Button value="Login" />
+        <Input bind:value={email} />
+        <Input bind:value={password} />
+        <OtherButton value="Login" myFunction={login} />
         <Button value="Home" />
     </div>
 </section>
