@@ -2,7 +2,7 @@
     import Button from '../../lib/Button.svelte'
 		import OtherButton from '../../lib/OtherButton.svelte'
     import Input from '../../lib/Input.svelte'
-    import * as db from '../../lib/firebase'
+    import * as db from '../../db/main'
 
     let email: string = ''
     let password: string = ''
