@@ -16,44 +16,31 @@ const config = {
 	measurementId: 'G-VJFMRWGSJT'
 };
 
-firebase.initializeApp(config);
+const app = firebase.initializeApp(config);
 
-export function Register(email: string, password: string) {
+const auth = getAuth(app);
+
+export async function Register(email: string, password: string) {
 	// create a user
-	const auth = getAuth();
-
-	createUserWithEmailAndPassword(auth, email, password)
-		.then(function (result: any) {
-			console.log('Successfully created user: ', result.user.uid);
-		})
-		.then((userCredential) => {
-			const user = userCredential;
-		})
-		.catch((error) => {
-			const errorCode = error.code;
-			const errorMessage = error.message;
-		});
+	try {
+		const user = await createUserWithEmailAndPassword(auth, email, password);
+		console.log(user);
+	} catch (error: any) {
+		console.log(error.message);
+	}
 }
 
-export function Login(email: string, password: string) {
+export async function Login(email: string, password: string) {
 	// sign in
-	const auth = getAuth();
-	signInWithEmailAndPassword(auth, email, password)
-		.then(function (result: any) {
-			console.log('Successfully signed in user: ', result.user.uid);
-		})
-		.then((userCredential) => {
-			const user = userCredential;
-		})
-		.catch((error) => {
-			const errorCode = error.code;
-			const errorMessage = error.message;
-		});
+	try {
+		const user = await signInWithEmailAndPassword(auth, email, password);
+		console.log(user);
+	} catch (error: any) {
+		console.log(error.message);
+	}
 }
 
-export function Logout() {
-	const auth = getAuth();
-	signOut(auth).then(() => {
-		console.log('signout successfully');
-	});
+export async function Logout() {
+	// logout a user
+	await signOut(auth);
 }

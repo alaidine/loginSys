@@ -14,15 +14,10 @@
 
 		function login() {
 				let input: string[] = [email, password]
-				let isSignedIn: boolean = true
 				console.log(input)
 				
 				if (isValidInput(input)) {
 						db.Login(email, password)
-				}
-
-				if (isSignedIn == true) { // change routes to be on logged in page
-						console.log("is signed in")
 				}
 		}
 </script>

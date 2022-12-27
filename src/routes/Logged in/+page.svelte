@@ -1,13 +1,15 @@
 <script>
     import Button from '../../lib/Button.svelte'
+		import OtherButton from '../../lib/OtherButton.svelte'
+		import * as db from '../../db/main'
 
-    function myFunction() {
-
-    }
+		function Logout() {
+			db.Logout()
+		}
 </script>
 
 <div>
-    <h1>Succesfully Logged In!</h1>
+    <h2>Succesfully Logged In!</h2>
+		<OtherButton value="Logout" myFunction={Logout} />
     <Button value="Home" />
-    <Button value="Log out" />
 </div>
