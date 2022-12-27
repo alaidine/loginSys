@@ -1,10 +1,16 @@
 import * as firebase from 'firebase/app';
+import { navigate } from 'svelte-routing';
 import {
 	getAuth,
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	signOut
 } from 'firebase/auth';
+
+function changeRoute(route: string) {
+	navigate(route);
+	window.location.reload()
+}
 
 const config = {
 	apiKey: 'AIzaSyDx7MdaXYcR8ICSgznjyP9cyRvC24OI69Y',
@@ -25,6 +31,7 @@ export async function Register(email: string, password: string) {
 	try {
 		const user = await createUserWithEmailAndPassword(auth, email, password);
 		console.log(user);
+		changeRoute('/Logged in');
 	} catch (error: any) {
 		console.log(error.message);
 	}
@@ -35,6 +42,7 @@ export async function Login(email: string, password: string) {
 	try {
 		const user = await signInWithEmailAndPassword(auth, email, password);
 		console.log(user);
+		changeRoute('/Logged in');
 	} catch (error: any) {
 		console.log(error.message);
 	}
@@ -43,4 +51,5 @@ export async function Login(email: string, password: string) {
 export async function Logout() {
 	// logout a user
 	await signOut(auth);
+	changeRoute('/');
 }

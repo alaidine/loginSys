@@ -11,5 +11,4 @@
 <div>
     <h2>Succesfully Logged In!</h2>
 		<OtherButton value="Logout" myFunction={Logout} />
-    <Button value="Home" />
 </div>
